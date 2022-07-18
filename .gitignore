@@ -1,0 +1,5 @@
+Stocks.Api/obj/*
+Stocks.Api/bin/*
+Stocks.Tests/bin/*
+Stocks.Tests/obj/*
+.DS_Store
