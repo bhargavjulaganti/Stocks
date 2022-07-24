@@ -23,7 +23,7 @@ public class TestBeforeAfter : BeforeAfterTestAttribute
         foreach(var x in getbody)
         {
             var loan = x.LocalType;
-             Debug.WriteLine(loan);
+            Debug.WriteLine(loan);
         }
 
         Debug.WriteLine(methodUnderTest.GetMethodBody());

@@ -22,6 +22,16 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.MapGet("/getStocks", ()=> Results.Ok(new user("sofi", "Bha2712")));
+
 app.Run();
 
 public partial class Program { }
+
+record user (string Name, string MemberID);
+
+
+
+
+
+

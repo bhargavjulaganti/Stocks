@@ -7,12 +7,13 @@ using Xunit.Sdk;
 
 namespace Stocks.Tests;
 
-public class UnitTest2 
+public class TestUsingAttribute 
 {
+    private readonly ITestOutputHelper _output;
 
-    public UnitTest2()
+    public TestUsingAttribute(ITestOutputHelper output)
     {
-  
+        _output = output;
     }
 
     [Fact]
@@ -20,5 +21,11 @@ public class UnitTest2
     public async Task Test1()
     {
         var loanNumber = "1234";
-    } 
+
+    }
+
+    public void Dispose()
+    {
+        _output.WriteLine("Running dispose method");
+    }   
 }
