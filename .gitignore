@@ -3,3 +3,6 @@ Stocks.Api/bin/*
 Stocks.Tests/bin/*
 Stocks.Tests/obj/*
 .DS_Store
+.idea/*
+Stocks.Api/.idea/*
+.vscode/settings.json
