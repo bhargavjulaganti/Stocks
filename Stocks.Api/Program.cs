@@ -7,6 +7,20 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var mySqlConnectionBuilder = new MySqlConnectionStringBuilder()
+{
+    Server = "localhost",
+    Database = "stocks",
+    UserID = "root",
+    Password = "",
+    Port = 50852
+};
+
+var serverVersion = ServerVersion.AutoDetect(mySqlConnectionBuilder.ConnectionString);
+
+builder.Services.AddDbContext<StocksDbContext>(options =>
+    options.UseMySql(mySqlConnectionBuilder.ConnectionString, serverVersion));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
