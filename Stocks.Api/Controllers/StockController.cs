@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Stocks.Api.DataLayer;
 
 namespace Stocks.Api.Controllers;
 
@@ -6,8 +7,10 @@ namespace Stocks.Api.Controllers;
 [Route("[controller]")]
 public class StockController : ControllerBase
 {
-    public StockController()
+    private readonly IStockPositionsDataLayer _stockPositionsDataLayer;
+    public StockController(IStockPositionsDataLayer stockPositionsDataLayer)
     {
+        _stockPositionsDataLayer = stockPositionsDataLayer;
     }
 
     [HttpGet(Name = "GetStock")]
@@ -19,5 +22,10 @@ public class StockController : ControllerBase
         };
         return stockObject;
     }
-   
+
+    [HttpPost(Name = "PostStock")]
+    public async Task Post([FromBody] string stockName)
+    {
+        await _stockPositionsDataLayer.CreateStockPosition(stockName);
+    }
 }

@@ -1,6 +1,7 @@
 using DefaultNamespace;
 using Microsoft.EntityFrameworkCore;
 using MySqlConnector;
+using Stocks.Api.DataLayer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddTransient<IStockPositionsDataLayer, StockPositionsDataLayer>();
 
 var mySqlConnectionBuilder = new MySqlConnectionStringBuilder()
 {
