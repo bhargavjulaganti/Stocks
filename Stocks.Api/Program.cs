@@ -1,3 +1,7 @@
+using DefaultNamespace;
+using Microsoft.EntityFrameworkCore;
+using MySqlConnector;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,7 +16,7 @@ var mySqlConnectionBuilder = new MySqlConnectionStringBuilder()
     Server = "localhost",
     Database = "stocks",
     UserID = "root",
-    Password = "",
+    Password = "password123",
     Port = 50852
 };
 
