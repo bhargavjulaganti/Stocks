@@ -17,10 +17,14 @@ public class StocksDbContext : DbContext, IStocksDbContext
     }
 
     public DbSet<StockPositions> StockPositions { get; set; }
+    public DbSet<DividendRecords> DividendRecords { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<StockPositions>()
             .HasKey(stockPositions => new { stockPositions.StockName });
+
+        modelBuilder.Entity<DividendRecords>()
+            .HasKey(x => x.MemberId);
     }
 }

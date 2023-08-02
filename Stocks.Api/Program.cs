@@ -13,15 +13,18 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<IStockPositionsDataLayer, StockPositionsDataLayer>();
+builder.Services.AddTransient<IDividendDataLayer, DividendDataLayer>();
 
 var mySqlConnectionBuilder = new MySqlConnectionStringBuilder()
 {
-    Server = "localhost",
+    Server = "localhost",//"127.0.0.1",
     Database = "stocks",
     UserID = "root",
     Password = "password123",
-    Port = 50852
+    Port = 3306
 };
+
+//var connectionString = "Server=localhost;Port=3306;Database=stocks;UserID=root;Pwd=password123;";
 
 var serverVersion = ServerVersion.AutoDetect(mySqlConnectionBuilder.ConnectionString);
 
